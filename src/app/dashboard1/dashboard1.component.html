@@ -1,0 +1,188 @@
+<br>
+<!-- Button trigger modal -->
+<div class="center-container">
+<button type="button" class="btn btn-primary" (click)="onOpenModal()" data-bs-toggle="modal"
+    data-bs-target="#staticBackdrop">
+    Desk Form
+</button>
+</div>
+
+<br>
+<!-- Button trigger modal -->
+<div class="center-container1">
+<button type="button" class="btn btn-primary" (click)="onOpenModal1()" data-bs-toggle="modal"
+    data-bs-target="#staticBackdrop1">
+    Reservation Form
+</button>
+</div>
+<br>
+<!-- Button trigger modal -->
+<div class="center-container2">
+<button type="button" class="btn btn-primary" (click)="onOpenModal2()" data-bs-toggle="modal"
+    data-bs-target="#staticBackdrop2">
+    Request Form
+</button>
+</div>
+<!-- Modal  -->
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Desk Form</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <form [formGroup]="deskForm" (ngSubmit)="onSubmit()">
+
+                    <div class="form-group">
+                        <label for="deskId">Desk ID:</label>
+                        <input type="deskId" class="form-control" id="InputDeskId" aria-describedby="desk-form"
+                            placeholder="Enter Desk ID">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="location">Location:</label>
+                        <input type="location" class="form-control" id="InputLocation" aria-describedby="Location"
+                            placeholder="Enter Location">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="size">Size:</label>
+                        <input type="size" class="form-control" id="InputSize" aria-describedby="desk-form"
+                            placeholder="Enter Size">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="amenities">Amenities:</label>
+                        <input type="amenities" class="form-control" id="InputAmenities" aria-describedby="desk-form"
+                            placeholder="Enter Required Amenities">
+                    </div>
+                    <br>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Is Available</label>
+                    </div>
+                    <br>
+                    <div>
+                        <label for="deskType">Desk Type: </label>&nbsp;
+                        <select id="deskType" formControlName="deskType" required>
+                            <option value="Private">Private</option>
+                            <option value="Shared">Shared</option>
+                        </select>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal 1-->
+<div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel1">Reservation Form</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- reservation-form.component.html -->
+                <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label for="reservationID">Reservation ID:</label>
+                        <input type="text" class="form-control" id="reservationID" placeholder="Enter Reservation ID" formControlName="reservationID"
+                            required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="userID">User ID:</label>
+                        <input type="text" class="form-control" id="userID" placeholder="Enter User ID" formControlName="userID" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="deskID">Desk ID:</label>
+                        <input type="text" class="form-control" id="deskID" placeholder="Enter Desk ID" formControlName="deskID" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="startTime">Start Time:</label>
+                        <input type="datetime-local" class="form-control" id="startTime" placeholder="Enter Start Time" formControlName="startTime"
+                            required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="endTime">End Time:</label>
+                        <input type="datetime-local" class="form-control" id="endTime" placeholder="Enter End Time"  formControlName="endTime"
+                            required>
+                    </div>
+                    <br>
+                    
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal 2-->
+<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel2" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel2">Request Form</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- request-form.component.html -->
+                <form [formGroup]="requestForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label for="requestID">Request ID:</label>
+                        <input type="text" class="form-control" id="requestID"  placeholder="Enter Request ID" formControlName="requestID" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="userID">User ID:</label>
+                        <input type="text" class="form-control" id="userID" placeholder="Enter User ID" formControlName="userID" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="requestedResource">Requested Resource:</label>
+                        <input type="text" class="form-control" id="requestedResource" placeholder="Enter Requested Resource"
+                            formControlName="requestedResource" required>
+                    </div>
+                    <br>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Is Resolved</label>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="resolvedBy">Resolved By:</label>
+                        <input type="text" class="form-control" id="resolvedBy" placeholder="Enter Resolved By" formControlName="resolvedBy" required>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>

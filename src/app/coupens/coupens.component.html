@@ -1,0 +1,85 @@
+ <!-- <div>
+    <h1>Office Seating Management System</h1>
+    <div *ngFor="let bay of bays" class="bay">
+      <h2>{{ bay.name }}</h2>
+      <div class="seat-container">
+        <button *ngFor="let seat of bay.seats" class="seat"
+          [ngClass]="{'blocked-seat': seat.blocked, 'available-seat': !seat.blocked}" (click)="toggleSeat(seat)"
+          (click)="onOpenModal()">
+          {{ seat.number }}
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  Modal  
+  
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Desk Form</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+  
+          <form [formGroup]="deskForm" (ngSubmit)="onSubmit()">
+  
+            <div class="form-group">
+              <label for="deskId">Reservation ID:</label>
+              <input type="deskId" class="form-control" id="InputDeskId" aria-describedby="desk-form"
+                placeholder="Enter Reservation ID">
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="location">User ID:</label>
+              <input type="location" class="form-control" id="InputLocation" aria-describedby="Location"
+                placeholder="Enter User ID ">
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="size">Desk ID</label>
+              <input type="size" class="form-control" id="InputSize" aria-describedby="desk-form"
+                placeholder="Enter Desk ID">
+            </div>
+            <br>
+  
+           
+            <div class="form-group">
+              <label for="amenities">Amenities:</label>
+              <input type="amenities" class="form-control" id="InputAmenities" aria-describedby="desk-form"
+                placeholder="Enter Required Amenities">
+            </div>
+            <br>
+  
+            <div class="form-group">
+              <label for="startTime">Start Time:</label>
+              <input type="datetime-local" class="form-control" id="startTime" placeholder="Enter Start Time"
+                formControlName="startTime" required>
+            </div>
+            <div class="form-group">
+              <label for="startTime">Start Time:</label>
+              <input type="datetime-local" class="form-control" id="startTime" placeholder="Enter Start Time"
+                formControlName="startTime" required>
+            </div>
+            <br>
+            
+            <div>
+              <label for="deskType">Desk Type: </label>&nbsp;
+              <select id="deskType" formControlName="deskType" required>
+                <option value="Private">Private</option>
+                <option value="Shared">Shared</option>
+              </select>
+            </div>
+  
+          </form>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>  -->

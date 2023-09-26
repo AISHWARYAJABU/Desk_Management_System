@@ -1,0 +1,215 @@
+<div class="page-container">
+  
+  <h1 style="font-size: 40px; padding-top: 50px;padding-left: 30px;"><b> Desk Management System &nbsp;  <i class="fa-solid fa-desktop fa-beat-fade"> </i>  </b></h1>
+  <br>
+
+
+  <div *ngFor="let bay of bays" class="bay">
+    <a (click)="toggleSeatContainer(bay)">
+      <h2>  <i class="fa-solid fa-computer"></i> &nbsp;&nbsp;{{ bay.name }}</h2>
+     
+    </a>
+
+
+
+    <!-- Use *ngIf to conditionally display the seat-container -->
+    <div class="seater" id="{{bay.name}}">
+      <button *ngFor="let seat of bay.seats" class="seat"
+        [ngClass]="{'blocked-seat': seat.blocked, 'available-seat': !seat.blocked}" (click)="toggleSeat(seat)"
+        (click)="onOpenModal()">
+        D-{{ seat.number }}
+      </button>
+     
+    </div>
+   
+  </div>
+</div>
+<br><br>
+
+<!-- <div class="form-group">
+  <label for="newBayName">New Bay Name:</label>
+  <input type="text" class="form-control" id="newBayName" [(ngModel)]="newBayName" name="newBayName">
+</div> -->
+
+<div class="text-center">
+  <button class="btn btn-success" (click)="addBay() " (click)="onPopupModal()"><i class="fa-solid fa-plus" style="color: #2a511f;"></i>&nbsp;&nbsp;
+
+Add Workspace</button>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+
+  <button class="btn btn-danger" (click)="deleteBay()" (click)="onPopoutModal()"> <i class="fa-solid fa-trash" style="color: #f76e6e;"></i> &nbsp;&nbsp;Delete Workspace</button>
+
+</div>
+
+<!-- pop up -->
+
+<div class="modal fade" id="popup" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="popupLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title"> Add Workspace</h2>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+      </div>
+      <div class="modal-body">
+        <h3>Are you sure to add workspace?</h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> <i class="fa-solid fa-xmark" style="color: #a4adbd;"></i>  &nbsp; &nbsp;No</button>
+        <button type="button" class="btn btn-primary" [ngClass]="{'btn-danger': formSubmitted}" (click)="onSubmit()">
+          <i class="fa-solid fa-square-check" style="color: #a1bceb;"></i> &nbsp; &nbsp;{{ formSubmitted ? 'Submitted' : 'Yes' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="modal fade" id="popout" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="popoutLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Delete Workspace</h2>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+      </div>
+      <div class="modal-body">
+        <h3>Are you sure to delete workspace?</h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-xmark" style="color: #a4adbd;"></i>  &nbsp; &nbsp;No</button>
+        <button type="button" class="btn btn-primary" [ngClass]="{'btn-danger': formSubmitted}" (click)="onSubmit()">
+          <i class="fa-solid fa-square-check" style="color: #a1bceb;"></i> &nbsp; &nbsp; {{ formSubmitted ? 'Submitted' : 'Yes' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal   -->
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Desk Reservation Form</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form [formGroup]="deskForm" (ngSubmit)="onSubmit()">
+
+          <div class="form-group">
+            <label for="reservationId">Reservation ID:</label>
+            <input type="text" formControlName="reservationId" class="form-control" id="InputReservationId"
+              aria-describedby="desk-form" placeholder="Enter Reservation ID">
+            <div *ngIf="deskForm.get('reservationId')?.hasError('required') && deskForm.get('reservationId')?.touched">
+              <small class="text-danger">Reservation ID is required.</small>
+            </div>
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="userId">User ID:</label>
+            <input type="text" formControlName="userId" class="form-control" id="InputUserId"
+              aria-describedby="desk-form" placeholder="Enter User ID">
+            <div *ngIf="deskForm.get('userId')?.hasError('required') && deskForm.get('userId')?.touched">
+              <small class="text-danger">User ID is required.</small>
+            </div>
+
+
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="deskId">Desk ID</label>
+            <input type="text" formControlName="deskId" class="form-control" id="InputDeskId"
+              aria-describedby="desk-form" placeholder="Enter Desk ID">
+            <div *ngIf="deskForm.get('deskId')?.hasError('required') && deskForm.get('deskId')?.touched">
+              <small class="text-danger">Desk ID is required.</small>
+            </div>
+          </div>
+          <br>
+
+
+          <div class="form-group">
+            <label for="amenities">Amenities:</label>
+            <input type="text" formControlName="amenities" class="form-control" id="InputAmenities"
+              aria-describedby="desk-form" placeholder="Enter Amenities">
+            <div *ngIf="deskForm.get('amenities')?.hasError('required') && deskForm.get('amenities')?.touched">
+              <small class="text-danger">Amenities is required.</small>
+            </div>
+            <div *ngIf="deskForm.get('amenities')?.hasError('minlength') && deskForm.get('amenities')?.touched">
+              <small class="text-danger">Amenities must be at least 4 characters long.</small>
+            </div>
+          </div>
+          <br>
+
+          <div class="form-group">
+            <label for="startTime">Start Time:</label>
+            <input type="datetime-local" class="form-control" id="startTime" placeholder="Enter Start Time"
+              formControlName="startTime" required>
+            <div *ngIf="deskForm.get('startTime')?.hasError('required') && deskForm.get('startTime')?.touched">
+              <small class="text-danger">StartTime is required.</small>
+            </div>
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="endTime">End Time:</label>
+            <input type="datetime-local" class="form-control" id="endTime" placeholder="Enter End Time"
+              formControlName="endTime" required>
+            <div *ngIf="deskForm.get('endTime')?.hasError('required') && deskForm.get('endTime')?.touched">
+              <small class="text-danger">EndTime is required.</small>
+            </div>
+          </div>
+          <br>
+
+          <div>
+            <label for="deskType">Desk Type: </label>&nbsp;
+            <select id="deskType" formControlName="deskType" required>
+              <option value="Private">Private</option>
+              <option value="Shared">Shared</option>
+            </select>
+            <div *ngIf="deskForm.get('deskType')?.hasError('required') && deskForm.get('deskType')?.touched">
+              <small class="text-danger">Desk Type is required.</small>
+            </div>
+
+          </div>
+
+        </form>
+      </div>
+
+      <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>  -->
+
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button 
+        type="button"
+        class="btn btn-primary" 
+        [ngClass]="{'btn-danger': formSubmitted}"
+        [disabled]="!deskForm.valid"
+        (click)="onSubmit()">
+          {{ formSubmitted ? 'Submitted' : 'Submit' }}
+        </button>
+        <!-- <button
+      type="submit"
+      class="btn btn-primary"
+      [ngClass]="{'btn-danger': formSubmitted}"
+      [disabled]="!deskForm.valid">
+      {{ formSubmitted ? 'Submitted' : 'Submit' }}
+    </button> -->
+    
+      </div>

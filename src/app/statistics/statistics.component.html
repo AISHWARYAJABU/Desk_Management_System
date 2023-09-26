@@ -1,0 +1,36 @@
+<!-- <div class="page-container ">
+<div>
+    <h1 style="font-size: 40px;text-align: center;padding-top:50px;"><b>Desk Management System</b></h1>
+    <br>
+    <div class="bay-container">
+    <div *ngFor="let bayName of bayNames" class="bay">
+      <h2>{{ bayName }}</h2>
+      
+    </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="page-container  ">
+    <div>
+        <h1 style="font-size: 40px;text-align: center;padding-top:50px;"><b>Desk Management System</b></h1>
+        <br>
+        <div class="bay-container ">
+        <div *ngFor="let bayName of bayNames" class="bay">
+          <div class="card-title1"><h2>{{ bayName }}</h2></div>
+          
+        </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+<!-- <div class="card-container row" >
+    <div class="card1 col-2" *ngFor="let index of indices">
+      <div class="card-title1">{{index.sector}}</div>
+      <div class="card-body1">Change:- {{index.changesPercentage}}</div>
+    </div>
+  </div> -->

@@ -19,6 +19,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { ToastrModule } from 'ngx-toastr';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { Sidenav1Component } from './sidenav1/sidenav1.component';
+import { Dashboard2Component } from './dashboard2/dashboard2.component';
+import { HeaderComponent } from './header/header.component';
+import { InstructionsComponent } from './instructions/instructions.component';
+import { InstructionspageComponent } from './instructionspage/instructionspage.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +38,11 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     PagesComponent,
     MediaComponent,
     SettingsComponent,
+    Sidenav1Component,
+    Dashboard2Component,
+    HeaderComponent,
+    InstructionsComponent,
+    InstructionspageComponent,
 
    
   ],

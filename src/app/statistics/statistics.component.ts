@@ -6,7 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./statistics.component.css']
 })
 export class StatisticsComponent {
- 
-  bayNames: string[] = ["IRIN Bay", " RAMIS Bay", "BridgeStone Bay", "Testing Bay","SAP Bay"]; 
+ bayNames: string[] = ["IRIN Bay", " RAMIS Bay", "BridgeStone Bay", "Testing Bay","SAP Bay"]; 
 
 }
